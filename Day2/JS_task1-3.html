@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <title>ファイル管理</title>
+  <style>
+    h1 {
+      border: solid 3px #4169E1;
+      padding: 3px;
+      color: #190707;
+      width: 250px;
+    }
+
+    table {
+      border-collapse: collapse;
+    }
+
+    td {
+      padding: 4px 8px;
+      border: 1px solid #23628f;
+    }
+
+    tr#allFile {
+      background: #AFEEEE;
+    }
+
+    li {
+      margin-top: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-contents">
+      <h1>ファイル管理一覧</h1>
+      <h2>全てのフォルダとアクセス権を表示</h2>
+    </div>
+  </header>
+  <div class="main-wrapper">
+    <section>
+      <table>
+        <tr id="allFile">
+          <td>フォルダ名</td>
+          <td>閲覧権限</td>
+          <td>編集権限</td>
+          <td>削除権限</td>
+        </tr>
+        <tr>
+          <td id="folderName1"></td>
+          <td id="viewAuth1"></td>
+          <td id="editAuth1"></td>
+          <td id="deleteAuth1"></td>
+        </tr>
+        <tr>
+          <td id="folderName2"></td>
+          <td id="viewAuth2"></td>
+          <td id="editAuth2"></td>
+          <td id="deleteAuth2"></td>
+        </tr>
+        <tr>
+          <td id="folderName3"></td>
+          <td id="viewAuth3"></td>
+          <td id="editAuth3"></td>
+          <td id="deleteAuth3"></td>
+        </tr>
+        <tr>
+          <td id="folderName4"></td>
+          <td id="viewAuth4"></td>
+          <td id="editAuth4"></td>
+          <td id="deleteAuth4"></td>
+        </tr>
+        <tr>
+          <td id="folderName5"></td>
+          <td id="viewAuth5"></td>
+          <td id="editAuth5"></td>
+          <td id="deleteAuth5"></td>
+        </tr>
+        <tr>
+          <td id="folderName6"></td>
+          <td id="viewAuth6"></td>
+          <td id="editAuth6"></td>
+          <td id="deleteAuth6"></td>
+        </tr>
+        <tr>
+          <td id="folderName7"></td>
+          <td id="viewAuth7"></td>
+          <td id="editAuth7"></td>
+          <td id="deleteAuth7"></td>
+        </tr>
+      </table>
+    </section>
+    <section>
+      <h2>閲覧権限が全員にあるフォルダ</h2>
+      <ul id="list"></ul>
+    </section>
+  </div>
+  <script>
+    const fileManage = {};
+    const system = '情報システム部';
+    const admin = '経営管理部';
+    const sales = '営業部';
+    const develop = '開発本部';
+    const ga = '総務部';
+    const accounting = '経理部';
+    const event = '企画部';
+    const everyone = [];
+    const makeFolder = (id, name, view, edit) => {
+      fileManage[id] = {
+        "フォルダ名": name,
+        "閲覧権限": view,
+        "編集権限": edit,
+        "削除権限": name
+      };
+    };
+    const folder = ['f001', 'f002', 'f003', 'f004', 'f005', 'f006', 'f007']
+    const name = [system, admin, sales, develop, ga, accounting, event];
+    const view = [system, admin, 'everyone', develop, 'everyone', accounting, 'everyone'];
+    const edit = [system, admin, sales, develop, 'everyone', ga, accounting, event];
+    for (let i = 0; i < folder.length; i++) {
+      makeFolder(folder[i], name[i], view[i], edit[i]);
+    }
+    for (let i = 0; i < Object.keys(fileManage).length; i++) {
+      const elem1 = document.getElementById('folderName' + (i + 1));
+      const elem2 = document.getElementById('viewAuth' + (i + 1));
+      const elem3 = document.getElementById('editAuth' + (i + 1));
+      const elem4 = document.getElementById('deleteAuth' + (i + 1));
+      elem1.innerText = fileManage[folder[i]].フォルダ名;
+      if (fileManage[folder[i]].閲覧権限 === 'everyone') {
+        const add = document.createElement('li');
+        add.innerText = fileManage[folder[i]].フォルダ名;
+        document.getElementById('list').appendChild(add);
+      }
+      elem2.innerText = fileManage[folder[i]].閲覧権限;
+      elem3.innerText = fileManage[folder[i]].編集権限;
+      elem4.innerText = fileManage[folder[i]].削除権限;
+    }
+  </script>
+</body>
+
+</html>
