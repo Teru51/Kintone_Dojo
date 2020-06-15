@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="IE=edge">
+  <title>ファイル管理</title>
+  <style>
+    h1 {
+      border: solid 3px #4169E1;
+      padding: 3px;
+      color: #190707;
+      width: 250px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-contents">
+      <h1>ファイル管理一覧</h1>
+      <h2>全てのフォルダとアクセス権を表示</h2>
+    </div>
+  </header>
+  <script>
+    var fileManage = {};
+    var system = '情報システム部';
+    var admin = '経営管理部';
+    var sales = '営業部';
+    var develop = '開発本部';
+    var ga = '総務部';
+    var accounting = '経理部';
+    var event = '企画部';
+    var makeFolder = function(name, view, edit) {
+      return {
+        "フォルダ名": name,
+        "閲覧権限": view,
+        "編集権限": edit,
+        "削除権限": name
+      };
+    };
+    var folder = ['f001', 'f002', 'f003', 'f004', 'f005', 'f006', 'f007'];
+    var names = [system, admin, sales, develop, ga, accounting, event];
+    var views = [system, admin, 'everyone', develop, 'everyone', accounting, 'everyone'];
+    var edites = [system, admin, sales, develop, 'everyone', ga, accounting, event];
+    for (var i = 0; i < folder.length; i++) {
+      fileManage[folder[i]] = makeFolder(names[i], views[i], edites[i]);
+    }
+    console.log(fileManage);
+  </script>
+</body>
+
+</html>
