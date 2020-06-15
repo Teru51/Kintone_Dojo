@@ -99,7 +99,7 @@
     var ga = '総務部';
     var accounting = '経理部';
     var event = '企画部';
-    var makeFolder = function (name, view, edit) {
+    var makeFolder = function(name, view, edit) {
       return {
         "フォルダ名": name,
         "閲覧権限": view,
@@ -115,7 +115,6 @@
       fileManage[folder[i]] = makeFolder(names[i], views[i], edites[i]);
     }
     for (var i = 0; i < Object.keys(fileManage).length; i++) {
-      console.log(fileManage);
       var elem1 = document.getElementById('folderName' + (i + 1));
       var elem2 = document.getElementById('viewAuth' + (i + 1));
       var elem3 = document.getElementById('editAuth' + (i + 1));
