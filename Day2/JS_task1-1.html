@@ -24,28 +24,28 @@
     </div>
   </header>
   <script>
-    const fileManage = {};
-    const system = '情報システム部';
-    const admin = '経営管理部';
-    const sales = '営業部';
-    const develop = '開発本部';
-    const ga = '総務部';
-    const accounting = '経理部';
-    const event = '企画部';
-    const makeFolder = (id, name, view, edit) => {
-      fileManage[id] = {
+    var fileManage = {};
+    var system = '情報システム部';
+    var admin = '経営管理部';
+    var sales = '営業部';
+    var develop = '開発本部';
+    var ga = '総務部';
+    var accounting = '経理部';
+    var event = '企画部';
+    var makeFolder = function (name, view, edit) {
+      return {
         "フォルダ名": name,
         "閲覧権限": view,
         "編集権限": edit,
         "削除権限": name
       };
     };
-    const folder = ['f001', 'f002', 'f003', 'f004', 'f005', 'f006', 'f007']
-    const name = [system, admin, sales, develop, ga, accounting, event];
-    const view = [system, admin, 'everyone', develop, 'everyone', accounting, 'everyone'];
-    const edit = [system, admin, sales, develop, 'everyone', ga, accounting, event];
-    for (let i = 0; i < folder.length; i++) {
-      makeFolder(folder[i], name[i], view[i], edit[i]);
+    var folder = ['f001', 'f002', 'f003', 'f004', 'f005', 'f006', 'f007'];
+    var names = [system, admin, sales, develop, ga, accounting, event];
+    var views = [system, admin, 'everyone', develop, 'everyone', accounting, 'everyone'];
+    var edites = [system, admin, sales, develop, 'everyone', ga, accounting, event];
+    for (var i = 0; i < folder.length; i++) {
+      fileManage[folder[i]] = makeFolder(names[i], views[i], edites[i]);
     }
     console.log(fileManage);
   </script>

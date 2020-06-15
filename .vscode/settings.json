@@ -1,3 +1,4 @@
 {
-  "liveServer.settings.multiRootWorkspaceName": "Kintone_Dojo"
+  "liveServer.settings.multiRootWorkspaceName": "Kintone_Dojo",
+  "git.ignoreLimitWarning": true
 }
