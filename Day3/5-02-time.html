@@ -15,13 +15,13 @@
       var now = new Date();
       var hours = ("0" + now.getHours()).slice(-2);
       var min = ("0" + now.getMinutes()).slice(-2);
-      var sec = ("0" + now.getSeconds()).slice(-2)
+      var sec = ("0" + now.getSeconds()).slice(-2);
       return [hours, min, sec];
     }
     var data = countdown();
     document.getElementById('output').textContent = data[0] + '時' + data[1] + '分' + data[2] + '秒';
 
-    setInterval(() => {
+    setInterval(function() {
       var data = countdown();
       document.getElementById('output').textContent = data[0] + '時' + data[1] + '分' + data[2] + '秒';
 
