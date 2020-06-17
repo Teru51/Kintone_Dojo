@@ -33,29 +33,26 @@
     <h4>月額金額：<span id="price">3900</span>円</h4>
   </form>
   <script>
-    window.onload = function() {
-      var total = 3900;
-      var price = document.getElementById('price');
-      document.getElementById('secure').onclick = function() {
-        if (this.checked) {
-          total += 250;
-          price.innerText = total;
-        } else {
-          total -= 250;
-          price.innerText = total;
-        }
+    var total = 3900;
+    var price = document.getElementById('price');
+    document.getElementById('secure').onclick = function() {
+      if (this.checked) {
+        total += 250;
+        price.innerText = total;
+      } else {
+        total -= 250;
+        price.innerText = total;
       }
-      document.getElementById('disc').onclick = function() {
-        if (this.checked) {
-          total += 1000;
-          price.innerText = total;
-        } else {
-          total -= 1000;
-          price.innerText = total;
-        }
+    };
+    document.getElementById('disc').onclick = function() {
+      if (this.checked) {
+        total += 1000;
+        price.innerText = total;
+      } else {
+        total -= 1000;
+        price.innerText = total;
       }
-    }
-
+    };
   </script>
 </body>
 
