@@ -8,10 +8,9 @@
       alert('郵便番号を入力してください');
     } else {
       $.ajax({
-        url: 'https://map.yahooapis.jp/search/zip/V1/zipCodeSearch?query=' + encodeURI(zipcode) + '&appid=dj00aiZpPVhVVzh1V01mOXpsRSZzPWNvbnN1bWVyc2VjcmV0Jng9M2M-&output=json',
+        url: `https://map.yahooapis.jp/search/zip/V1/zipCodeSearch?query=${encodeURI(zipcode)}&appid=dj00aiZpPVhVVzh1V01mOXpsRSZzPWNvbnN1bWVyc2VjcmV0Jng9M2M-&output=json`,
         dataType: 'jsonp',
         success: (response) => {
-          console.log(response);
           if (response.ResultInfo.Count === 0) {
             alert('住所が取得できませんでした');
           } else {
